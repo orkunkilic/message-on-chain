@@ -11,7 +11,7 @@ export default function Tip() {
     const [debouncedTipAmount] = useDebounce(tipAmount, 500)
     const { config } = usePrepareSendTransaction({
     request: {
-        to: "0xF5f7fc554CB91c897861C64Cd86aFCc96Beeae71",
+        to: "0xF5f7fc554CB91c897861C64Cd86aFCc96Beeae71", // Yep, you can send to this address!
         value: debouncedTipAmount ? ethers.utils.parseEther(debouncedTipAmount) : undefined
     },
     })

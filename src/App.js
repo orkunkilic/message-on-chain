@@ -71,7 +71,6 @@ function App() {
       <Text small>Created by <a href='https://twitter.com/0x_orkun' target='blank'>@0x_orkun</a></Text>
       <Spacer h={1} />
       {address && <Tip />}
-
       <Text small>Powered by <a href='https://wagmi.sh' target='blank'>Wagmi</a> & <a href='https://geist-ui.dev' target='blank'>Geist</a></Text>
     </Page>
   );
