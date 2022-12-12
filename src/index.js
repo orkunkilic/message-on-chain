@@ -1,17 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { WagmiConfig, createClient } from "wagmi";
+import { ConnectKitProvider, getDefaultClient } from "connectkit";
+import { mainnet, polygon, optimism, arbitrum, avalanche, bsc, avalancheFuji } from "wagmi/chains";
+import { GeistProvider, CssBaseline } from '@geist-ui/core'
+
+const client = createClient(
+  getDefaultClient({
+    appName: "Message On-Chain",
+    chains: [mainnet, polygon, optimism, arbitrum, avalanche, bsc, avalancheFuji]
+  }),
+);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <WagmiConfig client={client}>
+      <ConnectKitProvider mode='dark'>
+        <GeistProvider themeType='dark'>
+          <CssBaseline />
+          <App />
+        </GeistProvider>
+      </ConnectKitProvider>
+    </WagmiConfig>
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
